@@ -6,21 +6,18 @@ using System;
 namespace Roshambo.Tests
 {
   [TestClass]
-  public class Game
+  public class GameTests
   {
     [TestMethod]
-    public void RockPaperScissors_CorrectInput()
+    public void IsPlayable_ValidInput()
     {
       //Arrange
+      string invalidInput = "Stapler";
       Game game = new Game();
       //Act
-      string played = game.InvalidGamePlayed();
-      List<string> playerInput = new List<string> { "rock", "paper", "scissors" };
+      bool result = Game.InvalidGamePlayed(invalidInput);
       //Assert
-      foreach (var option in playerInput)
-      {
-        Assert.AreNotEqual(option, played);
-      }
+      Assert.IsFalse(result);
     }
   }
 }
